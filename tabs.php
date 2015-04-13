@@ -1,13 +1,20 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-/**
-* draws the necessary tabs when the viewer enters any page
-* the tabs viewed depends whether the viewer is admin/teacher or student
-* @author  Pallavi Maiya and Karthik Hebbar C -India, 2009
-* @version $Id: index.php,v 1.9 2009/05/31 mudrd8mz Exp $
-* @package mod/miniproject
-*/
 
 // function to draw tab and call correspondent function
 //
@@ -40,5 +47,3 @@ function tab($courseid,$blockid,$forum,$chatid,$groupid,$current_tab = 'descript
         return print_tabs($tabs, $current_tab, $inactive, $activated,true);
     }
 }
-
-?>

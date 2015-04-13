@@ -1,7 +1,20 @@
 <?php
-/**
- * Library functions for the pbltool block
- **/
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+
 
 function block_pbltool_print_page($courseid,$blockid,$groupid,$tab='description',$teacher=false,$return = FALSE) {
     global $CFG, $USER, $COURSE,$DB, $OUTPUT;
@@ -101,7 +114,8 @@ function print_project_description($courseid,$blockid,$groupid,$forum,$chat,$adm
  
      
     if(!$record = $DB->get_record('block_pbltool_projects', array('blockid' => $blockid, 'groupid' => $groupid)))
-    { $record = new stdClass();
+    {
+ $record = new stdClass();
         $record->blockid = $blockid;
         $record->groupid = $groupid;
         $record->description = get_string('description','block_pbltool');
@@ -478,5 +492,3 @@ function print_groups($blockid,$courseid,$forum,$chatid,$groupid,$tab)
     $output .= $OUTPUT->box_end();
     return $output;
 }
-
-?>

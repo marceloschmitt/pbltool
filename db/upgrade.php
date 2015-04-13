@@ -23,6 +23,7 @@ $dbman = $DB->get_manager(); /// loads ddl manager and xmldb classes
 
 $result = true;
 
+
 return true;
 /// And upgrade begins here. For each one, you'll need one
 /// block of code similar to the next one. Please, delete
