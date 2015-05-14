@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 $capabilities = array(
-     'block/analytics_graphs:viewpages' => array(
+     'block/pbltool:viewpages' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -28,7 +28,7 @@ $capabilities = array(
         )
     ),
     
-    'block/analytics_graphs:managepages' => array(
+    'block/pbltool:managepages' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -41,7 +41,7 @@ $capabilities = array(
         )
     ),
     
-    'block/analytics_graphs:addinstance' => array(
+    'block/pbltool:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
