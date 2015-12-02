@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-$plugin->version = 2015041301;
+$plugin->version = 2015051401;
 $plugin->requires = 2014051200; // YYYYMMDDHH (This is the release version for Moodle 2.7)
 
 $plugin->component = 'block_pbltool';
