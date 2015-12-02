@@ -27,6 +27,7 @@ $status = required_param('status', PARAM_INT);
 include("authorization.php");
 
 unset($toform);
+$toform = new stdClass();
 $toform->id = $id;
 $toform->status = $status;
 if($status == 4) {

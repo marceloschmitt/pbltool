@@ -75,8 +75,9 @@ class task_form extends moodleform {
         if($this->teacher == false){
         	$mform->getElement('status')->freeze();
         } 
-	// If not teacher and not planning, freeze descriptions 
-        if(!$this->teacher && $this->status) {	
+        
+        // If not teacher and not planning, freeze descriptions 
+        if(!$this->teacher && ($this->status && $this->status != 3)) {	
 	        $mform->getElement('name')->freeze();
 	        $mform->getElement('description')->freeze();
 	        $mform->getElement('timebegin')->freeze();
