@@ -15,33 +15,33 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-
+defined('MOODLE_INTERNAL') || die();
 require_once("$CFG->libdir/formslib.php");
 require_once($CFG->dirroot.'/blocks/pbltool/lib.php');
 
 
 class project_description_form extends moodleform {
 
-    function definition() {
+    public function definition() {
         global $CFG;
         global $COURSE;
 
         $mform =& $this->_form;
         $mform->addElement('header', 'displayinfo', get_string('general'));
 
-        // add display text field
+        // Add display text field
         $mform->addElement('htmleditor', 'description', get_string('description', 'block_pbltool'));
         $mform->setType('displaytexttext', PARAM_RAW);
         $mform->addRule('description', null, 'required', null, 'client');
 
-        $mform->addElement('hidden','blockid');
+        $mform->addElement('hidden', 'blockid');
         $mform->setType('blockid', PARAM_INT);
-        $mform->addElement('hidden','courseid');
+        $mform->addElement('hidden', 'courseid');
         $mform->setType('courseid', PARAM_INT);
-        $mform->addElement('hidden','groupid');
+        $mform->addElement('hidden', 'groupid');
         $mform->setType('groupid', PARAM_INT);
-        $mform->addElement('hidden','id');
-        $mform->setType('id',PARAM_INT);
+        $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
         $this->add_action_buttons();
 
     }

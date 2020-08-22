@@ -15,7 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-$string['pbltool'] = 'GPAC';
+$string['pbltool'] = 'PBLTool';
+$string['blockname'] = 'PBLTool';
+$string['Project_manager'] = 'PBLTool
 $string['eventview_description'] = 'Descrição do projeto visualizada';
 $string['eventupdate_description'] = 'Descrição do projeto atualizada';
 $string['eventview_tasks'] = 'Lista de tarefas visualizada';

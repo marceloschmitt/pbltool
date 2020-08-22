@@ -14,46 +14,47 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 class block_pbltool extends block_base {
 
-// Função de inicialização
-    function init() {
+    // Função de inicialização.
+    public function init() {
         $this->title = get_string('pbltool', 'block_pbltool');
-	$this->name = get_string('Not_configured', 'block_pbltool');
-	$this->date_begin = time();
-	$this->date_finish = time();
-     }
-    
+        $this->name = 'not_configured';
+        $this->date_begin = time();
+        $this->date_finish = time();
+    }
 
-// Função para escrever no bloco
-    function get_content() {
-        global $COURSE, $CFG ;
-        if ($this->content !== NULL) {
+    // Função para escrever no bloco.
+    public function get_content() {
+        global $COURSE, $CFG;
+        if ($this->content !== null) {
             return $this->content;
         }
         $this->content = new stdClass;
-	$this->content->text = '<a href="'.$CFG->wwwroot.'/blocks/pbltool/view.php?blockid='.$this->instance->id.
-                                '&courseid='.$COURSE->id.'"><b>'.$this->name.'</b></a><br>';
-//        $this->content->text .= $this->config->text; // coloca em content o que foi configurado
-		$this->content->footer = get_string('begin_date','block_pbltool').': '.date('d/m/y',$this->date_begin);
-		$this->content->footer .= '<br>'.get_string('finish_date','block_pbltool').': '.date('d/m/y',$this->date_finish);
+        if($this->name == 'not_configured') {
+            $this->content->text = get_string('Not_configured', 'block_pbltool') . '<BR>';
+        } else {
+            $this->content->text = '<a href="'.$CFG->wwwroot.'/blocks/pbltool/view.php?blockid='.$this->instance->id.
+                                '&courseid='.$COURSE->id.'" target=_blank><b>'.$this->name.'</b></a><br>';
+            $this->content->footer = get_string('begin_date','block_pbltool').': '.date('d/m/y',$this->date_begin);
+            $this->content->footer .= '<br>'.get_string('finish_date','block_pbltool').': '.date('d/m/y',$this->date_finish);
+	}
                                    
-            // variável anota se pode editar o bloco
+        // Variável anota se pode editar o bloco.
 
         return $this->content;
        
     }
 
-//Função que permite customização do bloco (botão Edit)
-// a partir do arquivo config_instance.html
-    function instance_allow_config() {
+    // Função que permite customização do bloco (botão Edit)
+    // a partir do arquivo config_instance.html.
+    public function instance_allow_config() {
         return true;
     }
 
- // Função para remover um bloco
-    function instance_delete(){
-	global $DB;
+    // Função para remover um bloco.
+    public function instance_delete(){
+        global $DB;
     	$recordset = $DB->get_records("block_pbltool_projects",array('blockid'=>$this->instance->id));
     	foreach($recordset AS $row) {
     		 $DB->delete_records('block_pbltool_tasks',array('project'=> $row->id));

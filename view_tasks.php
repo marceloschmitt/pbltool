@@ -26,8 +26,8 @@ global $CFG, $USER;
 
 // check for all required variables
 $blockid = required_param('blockid', PARAM_INT);
-$courseid = required_param('courseid',PARAM_INT);
-$groupid = optional_param('groupid',0,PARAM_INT);
+$courseid = required_param('courseid', PARAM_INT);
+$groupid = optional_param('groupid',0, PARAM_INT);
 
 $params['blockid'] = $blockid;
 $params['courseid'] = $courseid;

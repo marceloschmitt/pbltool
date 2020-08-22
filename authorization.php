@@ -15,8 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-// Ensure we have a valid courseid and can load the associated course object.
+defined('MOODLE_INTERNAL') || die();
 
+// Ensure we have a valid courseid and can load the associated course object.
 if (!($course = $DB->get_record('course', array('id' => $courseid)))) {
     print_error(get_string('invalidcourse', 'block_pbltool'));
 }
@@ -45,14 +46,13 @@ if ($groupid && !has_capability('block/pbltool:managepages', $context)) {
     $teacher = false;
     $aux = groups_get_all_groups($courseid, $USER->id);
     if (!$aux) { // If no group is defined.
-        error('No group definition',$CFG->wwwroot."/course/view.php?id=$courseid");
+        error('No group definition', $CFG->wwwroot."/course/view.php?id=$courseid");
     }
     foreach ($aux as $group);
-   	if ($group->id != $groupid) {
+    if ($group->id != $groupid) {
         error('You are trying to access a group that you are not authorized',
             $CFG->wwwroot."/course/view.php?id=$courseid");
     }
-}
-else {
-	$teacher = true;
+} else {
+    $teacher = true;
 }

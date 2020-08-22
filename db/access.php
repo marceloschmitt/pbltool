@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+defined('MOODLE_INTERNAL') || die();
+
 $capabilities = array(
      'block/pbltool:viewpages' => array(
         'captype' => 'read',
@@ -27,7 +29,7 @@ $capabilities = array(
             'manager' => CAP_ALLOW
         )
     ),
-    
+
     'block/pbltool:managepages' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
@@ -40,7 +42,7 @@ $capabilities = array(
             'manager' => CAP_ALLOW
         )
     ),
-    
+
     'block/pbltool:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
