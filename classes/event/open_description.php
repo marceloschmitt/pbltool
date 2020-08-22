@@ -22,11 +22,11 @@ class open_description extends \core\event\base {
         $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
         $this->data['objecttable'] = 'block_pbltool_projects';
     }
- 
+
     public static function get_name() {
         return get_string('eventopen_description', 'block_pbltool');
     }
- 
+
     public function get_description() {
         return "User {$this->userid} - Project {$this->objectid} - Group {$this->other}";
     }

@@ -31,19 +31,19 @@ class block_pbltool extends block_base {
             return $this->content;
         }
         $this->content = new stdClass;
-        if($this->name == 'not_configured') {
+        if ($this->name == 'not_configured') {
             $this->content->text = get_string('Not_configured', 'block_pbltool') . '<BR>';
         } else {
             $this->content->text = '<a href="'.$CFG->wwwroot.'/blocks/pbltool/view.php?blockid='.$this->instance->id.
                                 '&courseid='.$COURSE->id.'" target=_blank><b>'.$this->name.'</b></a><br>';
-            $this->content->footer = get_string('begin_date','block_pbltool').': '.date('d/m/y',$this->date_begin);
-            $this->content->footer .= '<br>'.get_string('finish_date','block_pbltool').': '.date('d/m/y',$this->date_finish);
-	}
-                                   
-        // Variável anota se pode editar o bloco.
+            $this->content->footer = get_string('begin_date', 'block_pbltool').': '.date('d/m/y',$this->date_begin);
+            $this->content->footer .= '<br>'.get_string('finish_date', 'block_pbltool').': '.date('d/m/y', $this->date_finish);
+    }
+
+        // Variavel anota se pode editar o bloco.
 
         return $this->content;
-       
+
     }
 
     // Função que permite customização do bloco (botão Edit)
@@ -53,48 +53,48 @@ class block_pbltool extends block_base {
     }
 
     // Função para remover um bloco.
-    public function instance_delete(){
+    public function instance_delete() {
         global $DB;
-    	$recordset = $DB->get_records("block_pbltool_projects",array('blockid'=>$this->instance->id));
-    	foreach($recordset AS $row) {
-    		 $DB->delete_records('block_pbltool_tasks',array('project'=> $row->id));
-    	}
-        $DB->delete_records('block_pbltool_projects',array('blockid' => $this->instance->id));
+        $recordset = $DB->get_records("block_pbltool_projects", array('blockid' => $this->instance->id));
+        foreach($recordset AS $row) {
+             $DB->delete_records('block_pbltool_tasks', array('project'=> $row->id));
+        }
+        $DB->delete_records('block_pbltool_projects', array('blockid' => $this->instance->id));
     }
 
-// Função a ser chamada após init()
-    function specialization() {
-    	
-	if(empty($this->config->forum) || empty($this->config->chat))
-       		$this->alert = 'Forum/chat not configured'; 
-	if(!empty($this->config->name)) 
-       		$this->name = $this->config->name; 
-	if(!empty($this->config->date_begin)) 
-       		$this->date_begin = $this->config->date_begin;
-	if(!empty($this->config->date_finish)) 
-       		$this->date_finish = $this->config->date_finish; 
-	if(!empty($this->config->forum)) 
-       		$this->forum = $this->config->forum; 
-	if(!empty($this->config->chat)) 
-       		$this->chat = $this->config->chat; 
-    
-	}
- 
-// Função que permite múltiplas instâncias em um curso
-    function instance_allow_multiple() {
+    // Função a ser chamada após init()
+    public function specialization() {
+
+    if(empty($this->config->forum) || empty($this->config->chat))
+            $this->alert = 'Forum/chat not configured';
+    if(!empty($this->config->name))
+            $this->name = $this->config->name;
+    if(!empty($this->config->date_begin))
+            $this->date_begin = $this->config->date_begin;
+    if(!empty($this->config->date_finish))
+            $this->date_finish = $this->config->date_finish;
+    if(!empty($this->config->forum))
+            $this->forum = $this->config->forum;
+    if(!empty($this->config->chat))
+            $this->chat = $this->config->chat;
+
+    }
+
+    // Função que permite múltiplas instâncias em um curso
+    public function instance_allow_multiple() {
         return true;
     }
 
-// Função que permite a configuração global
-// a partir do arquivo config_global.html e
-// da função config_save()
-    function has_config() {
+    // Função que permite a configuração global
+    // a partir do arquivo config_global.html e
+    // da função config_save()
+    public function has_config() {
         return false;
     }
 
-// Função para ser utilizada em conjunto com a
-// configuração global
-    function config_save($data) {
+    // Função para ser utilizada em conjunto com a
+    // configuração global
+    public function config_save($data) {
         if(isset($data['block_pbltool_strict'])) {
             set_config('block_pbltool_strict', '1');
         }
@@ -104,9 +104,9 @@ class block_pbltool extends block_base {
         return true;
     }
 
-// Função para ser utilizada em conjunto com a
-// configuração global
-    function instance_config_save($data,$nolongerused=false) {
+    // Função para ser utilizada em conjunto com a
+    // configuração global
+    public function instance_config_save($data,$nolongerused=false) {
         // Clean the data if we have to
         global $CFG;
         if(!empty($CFG->block_pbltool_strict)) {
@@ -117,13 +117,13 @@ class block_pbltool extends block_base {
         return parent::instance_config_save($data);
     }
 
-//Funções para controlar o visual
-    function hide_header() {
+    //Funções para controlar o visual
+    public function hide_header() {
         return false;
     }
 
-// Função para determinar onde o módulo aparece
-    function applicable_formats() {
+    // Função para determinar onde o módulo aparece
+    public function applicable_formats() {
      return array('all' => true);
      return array('site-index' => true,
                      'course-view' => true,

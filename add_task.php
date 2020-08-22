@@ -37,16 +37,16 @@ if ($form->is_cancelled()) {
     if (!($x = $DB->insert_record('block_pbltool_tasks', $fromform))) {
         error(get_string('updateerror', 'block_pbltool'));
     }
-                     
+
     /********* Log Task creation **********/
     $event = \block_pbltool\event\add_task::create(array(
             'objectid' => $blockid,
-            'context'=> $PAGE->context,
+            'context' => $PAGE->context,
             'other' => "$teacher : $groupid - Task $x",
             ));
     $event->trigger();
     /****************************************/
-                    
+
     redirect("$CFG->wwwroot/blocks/pbltool/view_tasks.php?blockid=$blockid&courseid=$courseid&groupid=$groupid");
 } else {
     // Form didn't validate or this is the first display
@@ -54,7 +54,7 @@ if ($form->is_cancelled()) {
     $toform->blockid = $blockid;
     $toform->courseid = $courseid;
     $toform->groupid = $groupid;
-    $toform->project=$projectid;
+    $toform->project = $projectid;
 
     $params = array();
     $params['blockid'] = $blockid;
@@ -64,7 +64,7 @@ if ($form->is_cancelled()) {
 
     $PAGE->set_url('/blocks/pbltool/add_task.php', $params);
 
-    $PAGE->set_title(get_string('pbltool','block_pbltool'));
+    $PAGE->set_title(get_string('pbltool', 'block_pbltool'));
     $PAGE->set_heading($course->fullname);
     $PAGE->set_pagelayout('print');
     echo $OUTPUT->header();
