@@ -20,7 +20,7 @@ class delete_task extends \core\event\base {
     protected function init() {
         $this->data['crud'] = 'd'; // c(reate), r(ead), u(pdate), d(elete)
         $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
-    $this->data['objecttable'] = 'block_pbltool_projects';
+        $this->data['objecttable'] = 'block_pbltool_projects';
     }
 
     public static function get_name() {

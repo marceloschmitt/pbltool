@@ -17,11 +17,11 @@
 
 require_once('../../config.php');
 
-$courseid = required_param('courseid',PARAM_INT);
+$courseid = required_param('courseid', PARAM_INT);
 $blockid = required_param('blockid', PARAM_INT);
 $groupid = required_param('groupid', PARAM_INT);
 
-//ensure we have a valid courseid and can load the associated course object
+// Ensure we have a valid courseid and can load the associated course object
 if (! $course = $DB->get_record('course', array('id' => $courseid))) {
     error(get_string('invalidcourse', 'block_pbltool', $courseid));
 }
@@ -46,16 +46,17 @@ $record = $DB->get_record('block_pbltool_projects', array('blockid' => $blockid,
 $toform->id = $record->id;
 $toform->status = 0;
 
-if (!$DB->update_record('block_pbltool_projects', $toform))
+if (!$DB->update_record('block_pbltool_projects', $toform)) {
     print_error(get_string('updateerror', 'block_pbltool'));
-         
-        /********* Log Open description **********/
-        $event = \block_pbltool\event\open_description::create(array(
-                'objectid' => $blockid,
-                'context'=> $PAGE->context,
-                'other'=> "1 : $groupid",
-                ));
-        $event->trigger();
-        /****************************************/
+}
+
+/********* Log Open description **********/
+$event = \block_pbltool\event\open_description::create(array(
+    'objectid' => $blockid,
+    'context'=> $PAGE->context,
+    'other'=> "1 : $groupid",
+    ));
+$event->trigger();
+/****************************************/
 
 redirect("$CFG->wwwroot/blocks/pbltool/view.php?blockid=$blockid&courseid=$courseid&groupid=$groupid");
