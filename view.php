@@ -25,18 +25,18 @@ global $CFG, $USER;
 
 // check for all required variables
 $blockid = required_param('blockid', PARAM_INT);
-$courseid = required_param('courseid',PARAM_INT);
-$groupid = optional_param('groupid',0,PARAM_INT);
+$courseid = required_param('courseid', PARAM_INT);
+$groupid = optional_param('groupid', 0, PARAM_INT);
 
 $params['blockid'] = $blockid;
 $params['courseid'] = $courseid;
 $params['groupid'] = $groupid;
 
 // Test if user has rights to access the page
-include('authorization.php');
- 
+require('authorization.php');
+
 $PAGE->set_url('/blocks/pbltool/view.php', $params);
-$PAGE->set_title(get_string('pluginname','block_pbltool'));
+$PAGE->set_title(get_string('pluginname', 'block_pbltool'));
 $PAGE->set_heading($course->fullname);
 $PAGE->set_pagelayout('print');
 

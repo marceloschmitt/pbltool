@@ -33,13 +33,13 @@ $params['blockid'] = $blockid;
 $params['courseid'] = $courseid;
 $params['groupid'] = $groupid;
 
-include('authorization.php');
+require('authorization.php');
 
 $PAGE->set_url('/blocks/pbltool/view_tasks.php', $params);
-$PAGE->set_title(get_string('pluginname','block_pbltool'));
+$PAGE->set_title(get_string('pluginname', 'block_pbltool'));
 $PAGE->set_heading($course->fullname);
 $PAGE->set_pagelayout('print');
 
 echo $OUTPUT->header();
-block_pbltool_print_page($courseid,$blockid,$groupid,'tasks',$teacher);
+block_pbltool_print_page($courseid, $blockid, $groupid, 'tasks', $teacher);
 echo $OUTPUT->footer();

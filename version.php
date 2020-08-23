@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
-$plugin->version = 2015120201;
+defined('MOODLE_INTERNAL') || die();
+$plugin->version = 2020082301;
 $plugin->requires = 2014051200; // YYYYMMDDHH (This is the release version for Moodle 2.7)
 $plugin->component = 'block_pbltool';
 $plugin->maturity = MATURITY_RC;
-$plugin->release = 'v2.8';
+$plugin->release = 'v3.8';

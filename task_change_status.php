@@ -24,23 +24,23 @@ $groupid = required_param('groupid', PARAM_INT);
 $id = required_param('id', PARAM_INT);
 $status = required_param('status', PARAM_INT);
 
-include("authorization.php");
+require("authorization.php");
 
 unset($toform);
 $toform = new stdClass();
 $toform->id = $id;
 $toform->status = $status;
-if($status == 4) {
-	$toform->timefinished = time();
-	$toform->progress = 100;
+if ($status == 4) {
+    $toform->timefinished = time();
+    $toform->progress = 100;
 }
-if($status == 6) {
-	$toform->timefinished = 0;
-	$toform->progress = 75;
+if ($status == 6) {
+    $toform->timefinished = 0;
+    $toform->progress = 75;
 }
-
-if (!$DB->update_record('block_pbltool_tasks', $toform))
+if (!$DB->update_record('block_pbltool_tasks', $toform)) {
     error(get_string('updateerror', 'block_pbltool'));
+}
 
 /********* Log Task update **********/
 $event = \block_pbltool\event\change_task_status::create(array(
