@@ -57,7 +57,7 @@ class block_pbltool extends block_base {
     public function instance_delete() {
         global $DB;
         $recordset = $DB->get_records("block_pbltool_projects", array('blockid' => $this->instance->id));
-        foreach ($recordset AS $row) {
+        foreach ($recordset as $row) {
              $DB->delete_records('block_pbltool_tasks', array('project' => $row->id));
         }
         $DB->delete_records('block_pbltool_projects', array('blockid' => $this->instance->id));
@@ -100,10 +100,9 @@ class block_pbltool extends block_base {
     // Função para ser utilizada em conjunto com a
     // configuração global
     public function config_save($data) {
-        if(isset($data['block_pbltool_strict'])) {
+        if (isset($data['block_pbltool_strict'])) {
             set_config('block_pbltool_strict', '1');
-        }
-        else {
+        } else {
             set_config('block_pbltool_strict', '0');
         }
         return true;
@@ -111,10 +110,10 @@ class block_pbltool extends block_base {
 
     // Função para ser utilizada em conjunto com a
     // configuração global
-    public function instance_config_save($data,$nolongerused=false) {
+    public function instance_config_save($data, $nolongerused=false) {
         // Clean the data if we have to
         global $CFG;
-        if(!empty($CFG->block_pbltool_strict)) {
+        if (!empty($CFG->block_pbltool_strict)) {
             $data->text = strip_tags($data->text);
         }
 
@@ -122,15 +121,15 @@ class block_pbltool extends block_base {
         return parent::instance_config_save($data);
     }
 
-    //Funções para controlar o visual
+    // Funcoes para controlar o visual
     public function hide_header() {
         return false;
     }
 
     // Função para determinar onde o módulo aparece
     public function applicable_formats() {
-     return array('all' => true);
-     return array('site-index' => true,
+        return array('all' => true);
+        return array('site-index' => true,
                      'course-view' => true,
                      'mod' => true);
     }

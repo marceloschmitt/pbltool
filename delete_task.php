@@ -43,7 +43,7 @@ $PAGE->set_pagelayout('print');
 echo $OUTPUT->header();
 if (!$confirm) {
     $optionsno = array('courseid' => $courseid, 'blockid' => $blockid, 'groupid' => $groupid);
-    $optionsyes = array ('id' => $id, 'courseid' => $courseid, 'blockid'=>$blockid, 'groupid' => $groupid, 'confirm' => 1,
+    $optionsyes = array ('id' => $id, 'courseid' => $courseid, 'blockid' => $blockid, 'groupid' => $groupid, 'confirm' => 1,
       'sesskey' => sesskey());
     echo $OUTPUT->heading(get_string('confirmdelete', 'block_pbltool'), 2);
     echo $OUTPUT->confirm(get_string('deletepage', 'block_pbltool'),

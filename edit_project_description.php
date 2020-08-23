@@ -50,10 +50,11 @@ if ($form->is_cancelled()) {
 
     redirect("$CFG->wwwroot/blocks/pbltool/view.php?blockid=$blockid&courseid=$courseid&groupid=$groupid");
 } else {
-    //form didn't validate or this is the first display
+    // form didn't validate or this is the first display
     if ($id != 0) {
-        if (!$toform = $DB->get_record('block_pbltool', array('id' => $id)))
+        if (!$toform = $DB->get_record('block_pbltool', array('id' => $id))) {
             error(get_string('nopage', 'block_pbltool', $id));
+        }
     } else {
         $toform = new stdClass;
     }
@@ -62,7 +63,7 @@ if ($form->is_cancelled()) {
     $toform->groupid = $groupid;
 
     $PAGE->set_url('/blocks/pbltool/edit_project_description.php', $params);
-    $PAGE->set_title(get_string('pluginname','block_pbltool'));
+    $PAGE->set_title(get_string('pluginname', 'block_pbltool'));
     $PAGE->set_heading($course->fullname);
     $PAGE->set_pagelayout('print');
 

@@ -55,12 +55,12 @@ if ($form->is_cancelled()) {
 
     redirect("$CFG->wwwroot/blocks/pbltool/view_tasks.php?blockid=$blockid&courseid=$courseid&groupid=$groupid");
 } else {
-    //form didn't validate or this is the first display
+    // form didn't validate or this is the first display
     $toform->blockid = $blockid;
     $toform->courseid = $courseid;
     $toform->groupid = $groupid;
-    $toform->id=$id;
-    $toform->prev_status=$toform->status;
+    $toform->id = $id;
+    $toform->prev_status = $toform->status;
 
     $params = array();
     $params['blockid'] = $blockid;
@@ -69,7 +69,7 @@ if ($form->is_cancelled()) {
     $params['id'] = $id;
 
     $PAGE->set_url('/blocks/pbltool/edit_task.php', $params);
-    $PAGE->set_title(get_string('pluginname','block_pbltool'));
+    $PAGE->set_title(get_string('pluginname', 'block_pbltool'));
     $PAGE->set_heading($course->fullname);
     $PAGE->set_pagelayout('print');
 
