@@ -16,13 +16,13 @@
 
 function xmldb_block_pbltool_upgrade($oldversion=0) {
     global $CFG, $THEME,  $DB;
-    $dbman = $DB->get_manager(); /// loads ddl manager and xmldb classes
+    $dbman = $DB->get_manager(); // loads ddl manager and xmldb classes
     $result = true;
     return true;
-/// And upgrade begins here. For each one, you'll need one
-/// block of code similar to the next one. Please, delete
-/// this comment lines once this file start handling proper
-/// upgrade code.
+// And upgrade begins here. For each one, you'll need one
+// block of code similar to the next one. Please, delete
+// this comment lines once this file start handling proper
+// upgrade code.
     if ($result && $oldversion < 2014061101) {
         upgrade_block_savepoint(true, 2015120201, 'pbltool');
     }

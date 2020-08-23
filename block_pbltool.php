@@ -36,9 +36,10 @@ class block_pbltool extends block_base {
         } else {
             $this->content->text = '<a href="'.$CFG->wwwroot.'/blocks/pbltool/view.php?blockid='.$this->instance->id.
                                 '&courseid='.$COURSE->id.'" target=_blank><b>'.$this->name.'</b></a><br>';
-            $this->content->footer = get_string('begin_date', 'block_pbltool').': '.date('d/m/y',$this->date_begin);
-            $this->content->footer .= '<br>'.get_string('finish_date', 'block_pbltool').': '.date('d/m/y', $this->date_finish);
-    }
+            $this->content->footer = get_string('begin_date', 'block_pbltool').': '.date('d/m/y', $this->date_begin);
+            $this->content->footer .= '<br>' . get_string('finish_date', 'block_pbltool') . ': ' .
+                date('d/m/y', $this->date_finish);
+        }
 
         // Variavel anota se pode editar o bloco.
 
@@ -56,28 +57,32 @@ class block_pbltool extends block_base {
     public function instance_delete() {
         global $DB;
         $recordset = $DB->get_records("block_pbltool_projects", array('blockid' => $this->instance->id));
-        foreach($recordset AS $row) {
-             $DB->delete_records('block_pbltool_tasks', array('project'=> $row->id));
+        foreach ($recordset AS $row) {
+             $DB->delete_records('block_pbltool_tasks', array('project' => $row->id));
         }
         $DB->delete_records('block_pbltool_projects', array('blockid' => $this->instance->id));
     }
 
     // Função a ser chamada após init()
     public function specialization() {
-
-    if(empty($this->config->forum) || empty($this->config->chat))
+        if (empty($this->config->forum) || empty($this->config->chat)) {
             $this->alert = 'Forum/chat not configured';
-    if(!empty($this->config->name))
+        }
+        if (!empty($this->config->name)) {
             $this->name = $this->config->name;
-    if(!empty($this->config->date_begin))
+        }
+        if (!empty($this->config->date_begin)) {
             $this->date_begin = $this->config->date_begin;
-    if(!empty($this->config->date_finish))
+        }
+        if (!empty($this->config->date_finish)) {
             $this->date_finish = $this->config->date_finish;
-    if(!empty($this->config->forum))
+        }
+        if (!empty($this->config->forum)) {
             $this->forum = $this->config->forum;
-    if(!empty($this->config->chat))
+        }
+        if (!empty($this->config->chat)) {
             $this->chat = $this->config->chat;
-
+        }
     }
 
     // Função que permite múltiplas instâncias em um curso

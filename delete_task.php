@@ -27,7 +27,7 @@ require('authorization.php');
 
 /* verifica se a tarefa existe */
 if (!$pbltoolpage = $DB->get_record('block_pbltool_tasks', array('id' => $id))) {
-    error(get_string('nopage','block_pbltool',$id));
+    error(get_string('nopage', 'block_pbltool', $id));
 }
 $params = array();
 $params['blockid'] = $blockid;
@@ -42,23 +42,23 @@ $PAGE->set_pagelayout('print');
 
 echo $OUTPUT->header();
 if (!$confirm) {
-    $optionsno = array('courseid'=>$courseid, 'blockid'=>$blockid, 'groupid'=>$groupid);
-    $optionsyes = array ('id'=>$id, 'courseid'=>$courseid, 'blockid'=>$blockid, 'groupid'=>$groupid, 'confirm'=>1,
-      'sesskey'=>sesskey());
-    echo $OUTPUT->heading(get_string('confirmdelete', 'block_pbltool'),2);
+    $optionsno = array('courseid' => $courseid, 'blockid' => $blockid, 'groupid' => $groupid);
+    $optionsyes = array ('id' => $id, 'courseid' => $courseid, 'blockid'=>$blockid, 'groupid' => $groupid, 'confirm' => 1,
+      'sesskey' => sesskey());
+    echo $OUTPUT->heading(get_string('confirmdelete', 'block_pbltool'), 2);
     echo $OUTPUT->confirm(get_string('deletepage', 'block_pbltool'),
     new moodle_url('delete_task.php', $optionsyes),
     new moodle_url($CFG->wwwroot.'/blocks/pbltool/view_tasks.php', $optionsno));
 } else {
     if (confirm_sesskey()) {
-        if (! $DB->delete_records('block_pbltool_tasks',array('id' => $id))) {
-            error('deleterror','block_pbltool');
+        if (! $DB->delete_records('block_pbltool_tasks', array('id' => $id))) {
+            error('deleterror', 'block_pbltool');
         }
 
         /********* Log Task delete: **********/
         $event = \block_pbltool\event\delete_task::create(array(
             'objectid' => $blockid,
-            'context'=> $PAGE->context,
+            'context' => $PAGE->context,
             'other' => "$teacher : $groupid - Task $id",
             ));
         $event->trigger();

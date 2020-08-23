@@ -36,7 +36,7 @@ if (! $block = $DB->get_record("block_instances", array("id" => $blockid))) {
 
 // Ensure the block belongs to the course.
 // if ($block->pageid != $courseid) {
-//    error("Block ID does not belong to course");
+// error("Block ID does not belong to course");
 // }
 
 
@@ -54,7 +54,7 @@ if (!$DB->update_record('block_pbltool_projects', $toform)) {
 /********* Log Accept Description **********/
 $event = \block_pbltool\event\accept_description::create(array(
     'objectid' => $blockid,
-    'context'=> $PAGE->context,
+    'context' => $PAGE->context,
     'other' => "1 : $groupid",
     ));
 $event->trigger();

@@ -53,8 +53,8 @@ if (!$DB->update_record('block_pbltool_projects', $toform)) {
 /********* Log Open description **********/
 $event = \block_pbltool\event\open_description::create(array(
     'objectid' => $blockid,
-    'context'=> $PAGE->context,
-    'other'=> "1 : $groupid",
+    'context' => $PAGE->context,
+    'other' => "1 : $groupid",
     ));
 $event->trigger();
 /****************************************/
