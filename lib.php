@@ -110,8 +110,7 @@ function block_pbltool_print_page($courseid,$blockid,$groupid,$tab='description'
 function print_project_description($courseid,$blockid,$groupid,$forum,$chat,$admin=false)
 {
 
-    global $CFG,$USER,$DB,$OUTPUT,$PAGE;
-
+    global $CFG, $USER, $DB, $OUTPUT, $PAGE;
 
     if (!$record = $DB->get_record('block_pbltool_projects', array('blockid' => $blockid, 'groupid' => $groupid))) {
         $record = new stdClass();
@@ -144,7 +143,7 @@ function print_project_description($courseid,$blockid,$groupid,$forum,$chat,$adm
      $output .= '<br></center>';
      $output .= $OUTPUT->box_end();
      $output .= $OUTPUT->box_start('coursebox');
-     $output .= $record->description;
+     $output .= format_text($record->description, FORMAT_MOODLE);
      $output .= $OUTPUT->box_end();
      $output .= '<center> <table><tr>';
      if(!$record->status) {
