@@ -15,8 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-
-
 // include moodle API and any supplementary files/API
 require_once('../../config.php');
 require_once('lib.php');
@@ -38,7 +36,7 @@ require('authorization.php');
 $PAGE->set_url('/blocks/pbltool/view_tasks.php', $params);
 $PAGE->set_title(get_string('pluginname', 'block_pbltool'));
 $PAGE->set_heading($course->fullname);
-$PAGE->set_pagelayout('print');
+$PAGE->set_pagelayout('incourse');
 
 echo $OUTPUT->header();
 block_pbltool_print_page($courseid, $blockid, $groupid, 'tasks', $teacher);

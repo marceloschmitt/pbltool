@@ -72,7 +72,7 @@ if ($form->is_cancelled()) {
     $PAGE->set_url('/blocks/pbltool/edit_task.php', $params);
     $PAGE->set_title(get_string('pluginname', 'block_pbltool'));
     $PAGE->set_heading($course->fullname);
-    $PAGE->set_pagelayout('print');
+    $PAGE->set_pagelayout('incourse');
 
     echo $OUTPUT->header();
 
