@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-defined('MOODLE_INTERNAL') || die();
 global $DB;
 require_once('../../config.php');
 $courseid = required_param('courseid', PARAM_INT);
