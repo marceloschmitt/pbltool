@@ -19,4 +19,4 @@ $plugin->version = 2020082301;
 $plugin->requires = 2016120500; // YYYYMMDDHH (This is the release version for Moodle 2.7)
 $plugin->component = 'block_pbltool';
 $plugin->maturity = MATURITY_RC;
-$plugin->release = 'v3.8';
+$plugin->release = 'v3.0';
