@@ -45,7 +45,7 @@ class task_form extends moodleform {
         // add display text field
         $mform->addElement('editor', 'description', get_string('taskdescription', 'block_pbltool'));
         $mform->setType('description', PARAM_RAW);
-        $mform->addRule('description', null, 'required', null, 'server');
+        $mform->addRule('description', null, 'required', null, 'client');
         $mform->addElement('date_selector', 'timebegin', get_string('begin_date', 'block_pbltool'));
         $mform->addElement('date_selector', 'timeplannedend', get_string('finish_date', 'block_pbltool'));
         $progress_array = array(0 => '0%',25 => '25%', 50 => '50%', 75 => '75%', 100 => '100%');
