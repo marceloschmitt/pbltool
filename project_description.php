@@ -15,6 +15,5 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 
-
- function write_project_description() {
- }
+function write_project_description() {
+}

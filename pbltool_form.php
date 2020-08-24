@@ -45,30 +45,30 @@ class pbltool_form extends moodleform {
         $mform->addElement('header', 'pictureinfo', get_string('picturefields', 'block_pbltool'));
 
         // add display picture yes/no option
-        $mform->addElement('selectyesno', 'displaypicture', get_string('displaypicture','block_pbltool'));
+        $mform->addElement('selectyesno', 'displaypicture', get_string('displaypicture', 'block_pbltool'));
         $mform->setDefault('displaypicture', 1);
 
         // add image selector radio buttons
         $images = block_pbltool_images();
         $radioarray = array();
-        for($i = 0; $i < count($images); $i++){
+        for ($i = 0; $i < count($images); $i++) {
             $radioarray[] = &$mform->createElement('radio', 'picture', '', $images[$i], $i);
         }
 
         $mform->addGroup($radioarray, 'radioar', get_string('pictureselect', 'block_pbltool'), array(' '), false);
 
         // add description field
-        $attributes=array('size' => '50', 'maxlength' => '100');
+        $attributes = array('size' => '50', 'maxlength' => '100');
         $mform->addElement('text', 'description', get_string('picturedesc', 'block_pbltool'), $attributes);
         $mform->setType('description', PARAM_TEXT);
         $mform->setType('description', PARAM_TEXT);
 
         // add optional grouping
-        $mform->addElement('header', 'optional', get_string('optional','form'), null, false);
+        $mform->addElement('header', 'optional', get_string('optional', 'form'), null, false);
 
         // add date_time selector in optional area
         $mform->addElement('date_time_selector', 'displaydate', get_string('displaydate', 'block_pbltool'),
-            array('optional'=>true));
+            array('optional' => true));
         $mform->setAdvanced('optional');
 
         $mform->addElement('hidden', 'blockid');

@@ -74,7 +74,7 @@ class task_form extends moodleform {
         }
 
         // If not teacher and not planning, freeze descriptions
-        if(!$this->teacher && ($this->status && $this->status != 3)) {
+        if (!$this->teacher && ($this->status && $this->status != 3)) {
             $mform->getElement('name')->freeze();
             $mform->getElement('description')->freeze();
             $mform->getElement('timebegin')->freeze();
@@ -88,7 +88,7 @@ class task_form extends moodleform {
         }
 
         // If not teacher and not planning and not working, just look
-        if (!$this->teacher && $this->status != 0 && $this->status!= 2) {
+        if (!$this->teacher && $this->status != 0 && $this->status != 2) {
             $mform->addElement('submit', 'cancel', get_string('Back_to_task_list', 'block_pbltool'));
             $mform->closeHeaderBefore('cancel');
         } else {

@@ -18,7 +18,7 @@
 require_once('../../config.php');
 
 global $DB;
-$courseid = required_param('courseid',PARAM_INT);
+$courseid = required_param('courseid', PARAM_INT);
 $blockid = required_param('blockid', PARAM_INT);
 $groupid = required_param('groupid', PARAM_INT);
 $id = required_param('id', PARAM_INT);
@@ -45,8 +45,8 @@ if (!$DB->update_record('block_pbltool_tasks', $toform)) {
 /********* Log Task update **********/
 $event = \block_pbltool\event\change_task_status::create(array(
          'objectid' => $blockid,
-         'context'=> $PAGE->context,
-         'other'=> "$teacher : $groupid - Task $id - Status $status",
+         'context' => $PAGE->context,
+         'other' => "$teacher : $groupid - Task $id - Status $status",
          ));
 $event->trigger();
 /****************************************/
