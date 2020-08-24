@@ -12,4 +12,3 @@ To use:
 2/ Create a chat that uses groups
 3/ Create the block inside the course
 4/ Edit the block to define dates and to relate chat and forum to the project.
-

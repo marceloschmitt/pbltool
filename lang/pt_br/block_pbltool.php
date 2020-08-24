@@ -64,7 +64,7 @@ $string['Go to your project'] = 'Vá para o seu projeto';
 $string['tasks'] = 'Tarefas';
 $string['groups'] = 'Grupos';
 $string['forum'] = 'Fórum';
-$string['map'] ='Mapa de Gantt';
+$string['map'] = 'Mapa de Gantt';
 $string['nogroup'] = 'A fim de utilizar este bloco, é necessário definir grupos de alunos!';
 $string['nogroup user'] = 'A fim de utilizar este bloco, é necessário fazer parte de um grupo!';
 
@@ -75,8 +75,8 @@ $string['projectdefinition'] = 'Definiç do projeto';
 $string['put_in_discussion'] = 'Coloca em discussão';
 
 $string['Status'] = 'Status';
-$string['tasktitle'] ='Título da tarefa';
-$string['taskdefinition'] ='Definição da tarefa';
+$string['tasktitle'] = 'Título da tarefa';
+$string['taskdefinition'] = 'Definição da tarefa';
 $string['taskdescription'] = 'Descrição da tarefa';
 $string['teacher'] = 'professor';
 $string['teacher_status'] = 'Professor';
