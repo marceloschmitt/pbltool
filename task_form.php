@@ -22,7 +22,7 @@ class task_form extends moodleform {
     private $teacher = false;
     private $status = 0;
 
-    function __construct($teacher = 0, $status = 0, $view = false) {
+    public function __construct($teacher = 0, $status = 0, $view = false) {
         $this->teacher = $teacher;
         $this->status = $status;
         $this->view = $view;
@@ -30,7 +30,7 @@ class task_form extends moodleform {
     }
 
 
-    function definition() {
+    public function definition() {
         global $CFG;
         global $COURSE;
 
@@ -46,15 +46,15 @@ class task_form extends moodleform {
         $mform->addElement('htmleditor', 'description', get_string('taskdescription', 'block_pbltool'));
         $mform->setType('description', PARAM_RAW);
         $mform->addRule('description', null, 'required', null, 'server');
-        $mform->addElement('date_selector', 'timebegin', get_string('begin_date','block_pbltool'));
-        $mform->addElement('date_selector', 'timeplannedend', get_string('finish_date','block_pbltool'));
-        $progress_array = array(0=>'0%',25=>'25%',50=>'50%',75=>'75%',100=>'100%');
+        $mform->addElement('date_selector', 'timebegin', get_string('begin_date', 'block_pbltool'));
+        $mform->addElement('date_selector', 'timeplannedend', get_string('finish_date', 'block_pbltool'));
+        $progress_array = array(0 => '0%',25 => '25%', 50 => '50%', 75 => '75%', 100 => '100%');
         $mform->addElement('select', 'progress', get_string('Progress', 'block_pbltool'), $progress_array);
         $mform->addElement('hidden', 'project');
         $mform->setType('project', PARAM_INT);
         $mform->addElement('hidden', 'courseid');
         $mform->setType('courseid', PARAM_INT);
-        $mform->addElement('hidden','groupid');
+        $mform->addElement('hidden', 'groupid');
         $mform->setType('groupid', PARAM_INT);
         $mform->addElement('hidden', 'blockid');
         $mform->setType('blockid', PARAM_INT);
@@ -69,7 +69,7 @@ class task_form extends moodleform {
             get_string('pointing', 'block_pbltool'), get_string('checkmark', 'block_pbltool'),
             get_string('redcross', 'block_pbltool'));
         $mform->addElement('select', 'status', get_string('Status', 'block_pbltool'), $legend);
-        if($this->teacher == false){
+        if ($this->teacher == false) {
             $mform->getElement('status')->freeze();
         }
 
@@ -83,12 +83,12 @@ class task_form extends moodleform {
         }
 
         // If not teacher and not working, freeze progress
-        if(!$this->teacher && $this->status != 2) {
+        if (!$this->teacher && $this->status != 2) {
             $mform->getElement('progress')->freeze();
         }
 
         // If not teacher and not planning and not working, just look
-        if(!$this->teacher && $this->status != 0 && $this->status!= 2) {
+        if (!$this->teacher && $this->status != 0 && $this->status!= 2) {
             $mform->addElement('submit', 'cancel', get_string('Back_to_task_list', 'block_pbltool'));
             $mform->closeHeaderBefore('cancel');
         } else {

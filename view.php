@@ -41,5 +41,5 @@ $PAGE->set_heading($course->fullname);
 $PAGE->set_pagelayout('print');
 
 echo $OUTPUT->header();
-block_pbltool_print_page($courseid,$blockid,$groupid);
+block_pbltool_print_page($courseid, $blockid, $groupid);
 echo $OUTPUT->footer();

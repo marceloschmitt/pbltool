@@ -25,5 +25,5 @@ $blockid = required_param('blockid', PARAM_INT);
 $courseid = required_param('courseid', PARAM_INT);
 $groupid = required_param('groupid', PARAM_INT);
 require('authorization.php');
-print_map($courseid,$blockid,$groupid,$teacher);
+print_map($courseid, $blockid, $groupid, $teacher);
 
