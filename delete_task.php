@@ -66,6 +66,6 @@ if (!$confirm) {
     } else {
         error('sessionerror', 'block_pbltool');
     }
-    redirect("$CFG->wwwroot/blocks/pbltool/view_tasks.php?courseid=$courseid&blockid=$blockid&groupid=$groupid")
+    redirect("$CFG->wwwroot/blocks/pbltool/view_tasks.php?courseid=$courseid&blockid=$blockid&groupid=$groupid");
 }
 echo $OUTPUT->footer();
