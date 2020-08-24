@@ -32,7 +32,7 @@ class project_description_form extends moodleform {
 
         // Add display text field
         $mform->addElement('textarea', 'description', get_string('description', 'block_pbltool'),
-            'wrap="virtual" rows="20" cols="50"');
+            'rows="10" cols="51"');
         $mform->setType('description', PARAM_TEXT);
         $mform->addRule('description', null, 'required', null, 'client');
 
