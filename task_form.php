@@ -43,8 +43,8 @@ class task_form extends moodleform {
         $mform->addRule('name', null, 'required', null, 'client');
 
         // add display text field
-        $mform->addElement('editor', 'description', get_string('taskdescription', 'block_pbltool'));
-        $mform->setType('description', PARAM_RAW);
+        $mform->addElement('textarea', 'description', get_string('taskdescription', 'block_pbltool'));
+        $mform->setType('description', PARAM_TEXT);
         $mform->addRule('description', null, 'required', null, 'client');
         $mform->addElement('date_selector', 'timebegin', get_string('begin_date', 'block_pbltool'));
         $mform->addElement('date_selector', 'timeplannedend', get_string('finish_date', 'block_pbltool'));
