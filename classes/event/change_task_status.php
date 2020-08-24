@@ -13,6 +13,8 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.namespace block_pbltool\event;
+
+namespace block_pbltool\event;
 defined('MOODLE_INTERNAL') || die();
 class change_task_status extends \core\event\base {
     protected function init() {

@@ -43,7 +43,6 @@ if (!$DB->update_record('block_pbltool_tasks', $toform)) {
     error(get_string('updateerror', 'block_pbltool'));
 }
 
-
 /********* Log Task update **********/
 $event = \block_pbltool\event\change_task_status::create(array(
          'objectid' => $blockid,
@@ -52,4 +51,5 @@ $event = \block_pbltool\event\change_task_status::create(array(
          ));
 $event->trigger();
 /****************************************/
+
 redirect("$CFG->wwwroot/blocks/pbltool/view_tasks.php?blockid=$blockid&courseid=$courseid&groupid=$groupid");
