@@ -38,11 +38,11 @@ if ($status == 6) {
     $toform->timefinished = 0;
     $toform->progress = 75;
 }
-error("AyyAAA");
+
 if (!$DB->update_record('block_pbltool_tasks', $toform)) {
     error(get_string('updateerror', 'block_pbltool'));
 }
-error("xxxxAyyAAA");
+
 
 /********* Log Task update **********/
 $event = \block_pbltool\event\change_task_status::create(array(
