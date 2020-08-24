@@ -48,7 +48,8 @@ if ($groupid && !has_capability('block/pbltool:managepages', $context)) {
     if (!$aux) { // If no group is defined.
         error('No group definition', $CFG->wwwroot."/course/view.php?id=$courseid");
     }
-    foreach ($aux as $group);
+    foreach ($aux as $group) {
+    }
     if ($group->id != $groupid) {
         error('You are trying to access a group that you are not authorized',
             $CFG->wwwroot."/course/view.php?id=$courseid");
