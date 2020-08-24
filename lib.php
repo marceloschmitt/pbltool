@@ -113,15 +113,14 @@ function print_project_description($courseid,$blockid,$groupid,$forum,$chat,$adm
     global $CFG,$USER,$DB,$OUTPUT,$PAGE;
 
 
-    if(!$record = $DB->get_record('block_pbltool_projects', array('blockid' => $blockid, 'groupid' => $groupid)))
-    {
- $record = new stdClass();
+    if (!$record = $DB->get_record('block_pbltool_projects', array('blockid' => $blockid, 'groupid' => $groupid))) {
+        $record = new stdClass();
         $record->blockid = $blockid;
         $record->groupid = $groupid;
         $record->description = get_string('description','block_pbltool');
         $record->status = 0;
-        if(!$DB->insert_record('block_pbltool_projects',$record))
-        {   error(get_string('inserterror' , 'block_pbltool'));
+        if (!$DB->insert_record('block_pbltool_projects',$record)) {
+            error(get_string('inserterror' , 'block_pbltool'));
         }
     }
 
