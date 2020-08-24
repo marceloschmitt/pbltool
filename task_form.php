@@ -38,7 +38,7 @@ class task_form extends moodleform {
         $mform->addElement('header', 'displayinfo', get_string('taskdefinition', 'block_pbltool'));
 
         // add
-        $mform->addElement('text', 'name', get_string('tasktitle', 'block_pbltool'), array('size' => 50, 'maxlength' => 100));
+        $mform->addElement('textarea', 'name', get_string('tasktitle', 'block_pbltool'), 'rows="1" cols="51"'));
         $mform->setType('name', PARAM_RAW);
         $mform->addRule('name', null, 'required', null, 'client');
 
